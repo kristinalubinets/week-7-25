@@ -1,12 +1,12 @@
 class HashTable {
     constructor() {
-        this.table = new Array(127);  //all key/value pairs will be stored inside the table property
+        this.table = new Array(20);  //all key/value pairs will be stored inside the table property
         this.size = 0;
     }
     hash(key) {
         let hash = 0;
         for(let i = 0; i < key.length; i++) {
-            hash += key.charCodeAt(i);   //can improve by multiplying char's ascii code by the order position of that char in the key, and then summing the values into hash
+            hash += key.charCodeAt(i) * i;   //can improve by multiplying char's ascii code by the order position of that char in the key, and then summing the values into hash
         }
         return hash % this.table.length;
     }
@@ -44,4 +44,7 @@ ht.remove('Sunflowers');
 console.log(ht.get('Sunflowers'))
 console.log(ht.size);
 
-
+// ht.set("Spain", 110);
+// ht.set("ǻ", 192);       //the sum of ascii chars of 'spain' equal to 'ǻ', thus, improving hash() func 'hash += key.charCodeAt(i) * i;' solves the issue
+// console.log(ht.get("Spain")); // [ 'ǻ', 192 ]
+// console.log(ht.get("ǻ")); // [ 'ǻ', 192 ]
