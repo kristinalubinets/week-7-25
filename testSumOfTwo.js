@@ -20,6 +20,17 @@ var twoSum = function(nums, target) {
 
 module.exports = twoSum;
 
+/********************************************************************* easier to understand ************************************************/
+var twoSum = function(nums, target) {   
+    let hash = {};   
+    for(let i = 0; i < nums.length; i++) {  
+        
+        if(hash[target - nums[i]] !== undefined){
+           return [hash[target - nums[i]], i];
+        }
+        hash[nums[i]] = i;
+    }
+};
 
 /***************************************************************************************************************************************** */
 var twoSum = function(nums, target) {
